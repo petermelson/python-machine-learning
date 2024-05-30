@@ -152,9 +152,8 @@ def plot(df_iris: pd.DataFrame):
     plt.show()
 
     # Create perceptron.
-    ppn = mlp.Perceptron(eta=0.01, max_iter=10)
-    ppn.fit(x, y)
-
+    ppn = mlp.Perceptron(eta=0.01, n_iter=10)
+    ppn.fit(X=X, y=y)
 
     LOGGER.debug(msg="plot ended")
 
