@@ -14,7 +14,7 @@ import pandas as pd
 import sys
 import yaml
 import matplotlib.pyplot as plt
-import ml_perceptron
+import ml_perceptron as mlp
 
 
 # --------------------------------------------------------------------------------------
@@ -93,6 +93,8 @@ LOGGER = logging.getLogger(name=__name__)
 
 # --------------------------------------------------------------------------------------
 # IRIS Dataset
+# --------------------------------------------------------------------------------------
+IRIS_URL = ML_CFG.get_item(key="IRIS_URL")
 
 # --------------------------------------------------------------------------------------
 # Main Controller
@@ -150,7 +152,7 @@ def plot(df_iris: pd.DataFrame):
     plt.show()
 
     # Create perceptron.
-    ppn = Perceptron(eta=0.01, max_iter=10)
+    ppn = mlp.Perceptron(eta=0.01, max_iter=10)
     ppn.fit(x, y)
 
 
