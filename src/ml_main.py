@@ -82,6 +82,7 @@ else:
 ML_CFG.print()
 MAJOR_VERSION_NAME = ML_CFG.get_item(key="MAJOR_VERSION_NAME")
 VERSION = ML_CFG.get_item(key="VERSION")
+OUTPUT_FILEPATH = ML_CFG.get_item(key="OUTPUT_FILEPATH")
 
 # --------------------------------------------------------------------------------------
 # Logging Configuration
@@ -149,7 +150,10 @@ def plot(df_iris: pd.DataFrame):
     plt.xlabel('sepal length (cm)')
     plt.ylabel('petal length (cm)')
     plt.legend(loc='upper left')
-    plt.show()
+    
+    # Output plot to file.
+    LOGGER.info(msg="Writing plot to file: {}".format(OUTPUT_FILEPATH))
+    plt.savefig(OUTPUT_FILEPATH)
 
     # Create perceptron.
     ppn = mlp.Perceptron(eta=0.01, n_iter=10)
