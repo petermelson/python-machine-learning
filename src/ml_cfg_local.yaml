@@ -28,4 +28,4 @@ IRIS_URL:               'https://archive.ics.uci.edu/ml/machine-learning-databas
 # --------------------------------------------------------------------------------------
 # Outputs
 # --------------------------------------------------------------------------------------
-OUTPUT_FILEPATH:        'output/plot.png'
+OUTPUT_FILEPATH:        'output/'

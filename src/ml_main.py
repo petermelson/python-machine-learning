@@ -152,12 +152,20 @@ def plot(df_iris: pd.DataFrame):
     plt.legend(loc='upper left')
     
     # Output plot to file.
-    LOGGER.info(msg="Writing plot to file: {}".format(OUTPUT_FILEPATH))
-    plt.savefig(OUTPUT_FILEPATH)
+    filename = OUTPUT_FILEPATH + 'plot1.png'
+    plt.savefig(filename)
 
     # Create perceptron.
+    LOGGER.info(msg="Creating Perceptron")
     ppn = mlp.Perceptron(eta=0.01, n_iter=10)
     ppn.fit(X=X, y=y)
+    plt.close()
+    plt.plot(range(1, len(ppn.errors_) + 1), ppn.errors_, marker='o')
+    plt.xlabel('Epochs')
+    plt.ylabel('Number of Updates')
+    filename = OUTPUT_FILEPATH + 'plot2.png'
+    plt.savefig(filename)
+    LOGGER.info(msg="Perceptron Complete")
 
     LOGGER.debug(msg="plot ended")
 
