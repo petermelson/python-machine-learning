@@ -13,6 +13,7 @@ import numpy as np
 import pandas as pd
 import sys
 import yaml
+import datetime as dt
 import matplotlib.pyplot as plt
 import ml_perceptron as mlp
 
@@ -109,16 +110,30 @@ def main():
 
     LOGGER.debug(msg="main started")
 
+    # Process the IRIS Dataset.
     try:
-        LOGGER.info(msg="Read IRIS Dataset Started")
+        LOGGER.info(msg="Process IRIS Dataset Started")
         df = pd.read_csv(filepath_or_buffer=IRIS_URL,
                          header=None,
                          encoding='utf-8')
         plot(df_iris=df)
     except Exception as e:
-        LOGGER.error(msg="Read IRIS Dataset failed: {0}".format(e))
+        LOGGER.error(msg="Process IRIS Dataset failed: {0}".format(e))
     else:
-        LOGGER.info(msg="Read IRIS Dataset Complete")
+        LOGGER.info(msg="Process IRIS Dataset Complete")
+
+    # Build Cashflow Dataframe.
+    try:
+        LOGGER.info(msg="Build Cashflow Dataframe Started")
+        cf = pd.DataFrame(columns=['month', 'age', 'date', 'b/f_balance'])
+        cf['month'] = range(13)
+        cf['age'] = cf['month'] + 5
+        print(cf.head(n=13))
+    except Exception as e:
+        LOGGER.error(msg="Build Cashflow Dataframe failed: {0}".format(e))
+    else:
+        LOGGER.info(msg="Build Cashflow Dataframe Complete")
+
 
     LOGGER.debug(msg="main ended")
 
